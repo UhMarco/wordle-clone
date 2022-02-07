@@ -1,6 +1,5 @@
 import './App.css';
 import Board from "./Board";
-import Keyboard from "./Keyboard";
 
 function App() {
   return (
