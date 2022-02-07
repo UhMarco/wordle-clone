@@ -130,7 +130,7 @@ export default function Board() {
         <>
             <div className="board">
                 {rows.map((row, i) => <Row key={i} data={row} states={states[i]} invalid={rowStates[i]} />)}
-                <p style={{ textAlign: "center", visibility: `${gameOver ? "visible" : "hidden"}`, textTransform: "capitalize" }}>{word}</p>
+                <p style={{ textAlign: "center", visibility: `${gameOver ? "visible" : "hidden"}`, textTransform: "uppercase" }}>{word}</p>
             </div>
             <Keyboard rows={rows} states={states} />
         </>

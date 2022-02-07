@@ -12,9 +12,11 @@ export default function Key(props: KeyProps) {
     };
 
     const press = () => {
-        window.dispatchEvent(new KeyboardEvent('keydown', {
-            key: check ? alternate[props.type] : props.type
-        }));
+        setTimeout(() => {
+            window.dispatchEvent(new KeyboardEvent('keydown', {
+                key: check ? alternate[props.type] : props.type
+            }));
+        }, 1); // Delay to allow states to change
     };
 
     const style = {
