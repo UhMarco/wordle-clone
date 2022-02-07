@@ -1,38 +1,218 @@
-.App {
-  text-align: center;
+:root {
+  --text-colour: #1A1A1B;
+  --empty-colour: #D4D6DA;
+  --full-colour: #888A8C;
+  --wrong-colour: #787C7E;
+  --present-colour: #CAB458;
+  --correct-colour: #6BAA64;
 }
 
-.App-logo {
-  height: 40vmin;
+.game {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.heading {
+  margin-top: 0;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: center;
+  width: 500px;
+}
+
+.title{
+  letter-spacing: 2px;
+  margin: 0;
+  margin-bottom: 5px;
   pointer-events: none;
+  color: var(--text-colour);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 70px;
+}
+
+@keyframes shake {
+  0% { transform: translate(5px, 0px); }
+  12% { transform: translate(-5px, 0px); }
+  24% { transform: translate(5px, 0px); }
+  36% { transform: translate(-5px, 0px); }
+  48% { transform: translate(3px, 0px); }
+  60% { transform: translate(-3px, 0px); }
+  72% { transform: translate(1px, 0px); }
+  84% { transform: translate(-1px, 0px); }
+}
+
+.row {
+  display: flex;
+  gap: inherit;
+}
+
+.row.invalid {
+  animation-name: shake;
+  animation-duration: 200ms;
+}
+
+.tile-container {
+  width: 62px;
+  height: 62px;
+}
+
+.tile {
+  border: 2px solid;
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--text-colour);
+}
+
+.tile.empty {
+  border-color: var(--empty-colour);
+}
+
+@keyframes pop-in {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.tile.full {
+  border-color: var(--full-colour);
+  animation-name: pop-in;
+  animation-duration: 100ms;
+}
+
+@keyframes flip {
+  0%, 48% {
+    border-color: var(--full-colour);
+    background-color: transparent;
+    color: var(--text-colour);
   }
+  50%, 100% {
+    color: white;
+  }
+  0% { transform: scaleY(1); }
+  50% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.tile.wrong {
+  border-color: var(--wrong-colour);
+  background-color: var(--wrong-colour);
+  color: white;
+  animation-name: flip;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+}
+
+.tile.present {
+  border-color: var(--present-colour);
+  background-color: var(--present-colour);
+  color: white;
+  animation-name: flip;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+}
+
+.tile.correct {
+  border-color: var(--correct-colour);
+  background-color: var(--correct-colour);
+  color: white;
+  animation-name: flip;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+}
+
+@keyframes jump {
+  0% { transform: translateY(0px); }
+  20% { transform: translateY(5px); }
+  60% { transform: translateY(-25px); }
+  90% { transform: translateY(3px); }
+  100% { transform: translateY(0px); }
+}
+
+.tile.finished {
+  animation-name: jump;
+  animation-duration: 0.4s;
+  animation-timing-function: linear;
+}
+
+.keyboard {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 6px;
+}
+
+.key {
+  height: 58px;
+  width: 43px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: smaller;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  text-transform: uppercase;
+  border-radius: 4px;
+  user-select: none;
+  background-color: var(--empty-colour);
+}
+
+.key.wide {
+  width: 80px;
+}
+
+.key.wrong {
+  background-color: var(--wrong-colour);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.key.present {
+  background-color: var(--present-colour);
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.key.correct {
+  background-color: var(--correct-colour);
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .heading {
+    width: 300px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .keyboard {
+    gap: 3px;
+  }
+
+  .keyboard-row {
+    gap: 2px;
+  }
+
+  .key {
+    font-size: x-small;
+    height: 45px;
+    width: 32px;
+  }
+
+  .key.wide {
+    width: 50px;
   }
 }
