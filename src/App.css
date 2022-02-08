@@ -24,7 +24,7 @@
   width: 500px;
 }
 
-.title{
+.title {
   letter-spacing: 2px;
   margin: 0;
   margin-bottom: 5px;
@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 70px;
+  margin-top: 5vh;
 }
 
 @keyframes shake {
@@ -134,11 +134,12 @@
 }
 
 @keyframes jump {
-  0% { transform: translateY(0px); }
-  20% { transform: translateY(5px); }
-  60% { transform: translateY(-25px); }
-  90% { transform: translateY(3px); }
-  100% { transform: translateY(0px); }
+  0%, 20% { transform: translateY(0); }
+  40% { transform: translateY(-30px); }
+  50% { transform: translateY(5px); }
+  60% { transform: translateY(-15px); }
+  80% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
 }
 
 .tile.finished {
@@ -195,24 +196,40 @@
 
 @media (max-width: 500px) {
   .heading {
-    width: 300px;
+    width: 90vw;
+  }
+
+  .board {
+    margin-top: 5vh;
   }
 
   .keyboard {
-    gap: 3px;
+    gap: 1vw;
+    position: absolute;
+    bottom: 3vh;
   }
 
   .keyboard-row {
-    gap: 2px;
+    gap: 0.8vw;
   }
 
   .key {
-    font-size: x-small;
-    height: 45px;
-    width: 32px;
+    height: 13vw;
+    width: 8.5vw;
   }
 
   .key.wide {
-    width: 50px;
+    width: 16vw;
+  }
+}
+
+@media (max-height: 700px) {
+  .tile-container {
+    width: 52px;
+    height: 52px;
+  }
+
+  .board {
+    margin-top: 1vh;
   }
 }
