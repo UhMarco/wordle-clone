@@ -18,16 +18,17 @@ function repeatedCharacters(word: string): boolean {
     return false;
 }
 
-export default function Board() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [word, setWord] = useState<string>(() => {
-        while (true) {
-            const protentialWord = answers[Math.floor(Math.random() * answers.length)];
-            if (!repeatedCharacters(protentialWord)) {
-                return protentialWord;
-            }
+const randomWord = () => {
+    while (true) {
+        const protentialWord = answers[Math.floor(Math.random() * answers.length)];
+        if (!repeatedCharacters(protentialWord)) {
+            return protentialWord;
         }
-    });
+    }
+};
+
+export default function Board() {
+    const [word, setWord] = useState<string>(randomWord);
 
     const [gameOver, setGameOver] = useState<boolean>(false);
     const [rows, setRows] = useState<any[]>([[], [], [], [], [], []]);
@@ -132,6 +133,7 @@ export default function Board() {
         setActiveRow(0);
         setRowStates(Array(6).fill(false));
         setGameOver(false);
+        setWord(randomWord);
     }
 
     return (
