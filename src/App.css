@@ -260,3 +260,14 @@
     margin-top: 1vh;
   }
 }
+
+@media (max-height: 650px) {
+  .tile-container {
+    width: 7vh;
+    height: 7vh;
+  }
+
+  .tile {
+    font-size: x-large;
+  }
+}
