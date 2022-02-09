@@ -5,6 +5,7 @@
   --wrong-colour: #787C7E;
   --present-colour: #CAB458;
   --correct-colour: #6BAA64;
+  user-select: none;
 }
 
 .game {
