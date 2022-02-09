@@ -20,7 +20,7 @@ export default function Key(props: KeyProps) {
     };
 
     const style = {
-        transitionDelay: props.colour === 'correct finished' ? '1.1s' : '1.95s'
+        transitionDelay: props.colour === '' ? '0s' : props.colour === 'correct finished' ? '1.1s' : '1.95s'
     };
 
     return <div className={`key ${props.colour} ${check ? 'wide' : ''}`} onClick={press} style={style}>{props.type}</div>;

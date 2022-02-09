@@ -126,14 +126,26 @@ export default function Board() {
         };
     });
 
+    function restart() {
+        setRows([[], [], [], [], [], []]);
+        setStates([[], [], [], [], [], []]);
+        setActiveRow(0);
+        setRowStates(Array(6).fill(false));
+        setGameOver(false);
+    }
+
     return (
         <>
             <div className="board">
                 {rows.map((row, i) => <Row key={i} data={row} states={states[i]} invalid={rowStates[i]} />)}
-                <p style={{ textAlign: "center", visibility: `${gameOver ? "visible" : "hidden"}`, textTransform: "uppercase" }}>{word}</p>
+                <div className="post-game-container" style={{ visibility: `${gameOver ? "visible" : "hidden"}` }}>
+                    <p style={{ textAlign: "center", textTransform: "uppercase", pointerEvents: "none" }}>{word}</p>
+                    <div className="button" onClick={restart}>
+                        <img src={require('./restart.png')} alt='Restart'></img>
+                    </div>
+                </div>
             </div>
             <Keyboard rows={rows} states={states} />
         </>
-
     );
 }

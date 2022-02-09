@@ -194,6 +194,33 @@
   color: white;
 }
 
+.post-game-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+
+.button {
+  color: var(--text-colour);
+  width: 30px;
+  height: 30px;
+  background-color: var(--empty-colour);
+  border-color: var(--empty-colour);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button img {
+  width: 20px;
+  height: 20px;
+  filter: var(--text-colour);
+}
+
 @media (max-width: 500px) {
   .heading {
     width: 90vw;
@@ -223,7 +250,7 @@
   }
 }
 
-@media (max-height: 700px) {
+@media (max-height: 750px) {
   .tile-container {
     width: 52px;
     height: 52px;
