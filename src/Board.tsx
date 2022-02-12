@@ -141,7 +141,7 @@ export default function Board() {
             <div className="board">
                 {rows.map((row, i) => <Row key={i} data={row} states={states[i]} invalid={rowStates[i]} />)}
                 <div className="post-game-container" style={{ visibility: `${gameOver ? "visible" : "hidden"}` }}>
-                    <p style={{ textAlign: "center", textTransform: "uppercase", pointerEvents: "none" }}>{word}</p>
+                    <p className="answer" style={{ textAlign: "center", textTransform: "uppercase", pointerEvents: "none" }}>{word}</p>
                     <div className="button" onClick={restart}>
                         <img src={require('./restart.png')} alt='Restart'></img>
                     </div>

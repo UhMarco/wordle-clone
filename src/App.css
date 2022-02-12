@@ -1,11 +1,28 @@
 :root {
+  user-select: none;
+}
+
+html {
   --text-colour: #1A1A1B;
   --empty-colour: #D4D6DA;
   --full-colour: #888A8C;
   --wrong-colour: #787C7E;
   --present-colour: #CAB458;
   --correct-colour: #6BAA64;
-  user-select: none;
+  --key-colour: black;
+  --underscore-colour: lightgray;
+  --border-colour: #D4D6DA;
+}
+
+html[data-theme="dark"] {
+  background-color: #121213;
+  --empty-colour: #818384;
+  --text-colour: white;
+  --key-colour: white;
+  --wrong-colour: #3A3A3C;
+  --underscore-colour: #3A3A3C;
+  --border-colour: #3A3A3C;
+  --full-colour: #565758;
 }
 
 .game {
@@ -19,9 +36,10 @@
 
 .heading {
   margin-top: 0;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--underscore-colour);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-self: center;
   width: 500px;
 }
 
@@ -31,6 +49,18 @@
   margin-bottom: 5px;
   pointer-events: none;
   color: var(--text-colour);
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.answer {
+  color: var(--text-colour);
+}
+
+.theme-button {
+  margin-top: 7px;
+  width: 30px;
 }
 
 .board {
@@ -78,7 +108,7 @@
 }
 
 .tile.empty {
-  border-color: var(--empty-colour);
+  border-color: var(--border-colour);
 }
 
 @keyframes pop-in {
@@ -174,6 +204,7 @@
   border-radius: 4px;
   user-select: none;
   background-color: var(--empty-colour);
+  color: var(--key-colour);
 }
 
 .key.wide {
